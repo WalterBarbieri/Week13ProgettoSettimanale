@@ -11,9 +11,10 @@ public class Video extends Multimediale implements Play, Luminosity {
 			String myVideo = titolo;
 			for (int j = 0; j < volume; j++) {
 				myVideo += "!";
-				for (int z = 0; z < luminosita; z++) {
-					myVideo += "*";
-				}
+
+			}
+			for (int z = 0; z < luminosita; z++) {
+				myVideo += "*";
 			}
 			System.out.println(myVideo);
 		}
