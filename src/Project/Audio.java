@@ -19,13 +19,17 @@ public class Audio extends Multimediale implements Play {
 
 	@Override
 	public void alzaVolume() {
-		volume += volume;
+		if (volume < 10) {
+			volume++;
+		}
 
 	}
 
 	@Override
 	public void abbassaVolume() {
-		volume -= volume;
+		if (volume > 0) {
+			volume--;
+		}
 
 	}
 }

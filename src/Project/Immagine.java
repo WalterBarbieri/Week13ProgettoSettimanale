@@ -7,13 +7,17 @@ public class Immagine extends Multimediale implements Show, Luminosity {
 
 	@Override
 	public void aumentaLuminosita() {
-		luminosita += luminosita;
+		if (luminosita < 10) {
+			luminosita++;
+		}
 
 	}
 
 	@Override
 	public void diminuisciLuminosita() {
-		luminosita -= luminosita;
+		if (luminosita > 0) {
+			luminosita--;
+		}
 
 	}
 

@@ -21,18 +21,28 @@ public class Video extends Multimediale implements Play, Luminosity {
 	};
 
 	public void alzaVolume() {
-		volume += volume;
+		if (volume < 10) {
+			volume++;
+		}
 	};
 
 	public void abbassaVolume() {
-		volume -= volume;
+		if (volume > 0) {
+			volume--;
+		}
 	};
 
 	public void aumentaLuminosita() {
-		luminosita += luminosita;
+		if (luminosita < 10) {
+			luminosita++;
+		}
+
 	};
 
 	public void diminuisciLuminosita() {
-		luminosita -= luminosita;
+		if (luminosita > 0) {
+			luminosita--;
+		}
+
 	};
 }
