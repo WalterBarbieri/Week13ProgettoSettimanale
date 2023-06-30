@@ -40,6 +40,33 @@ public class App {
 			}
 			System.out.println("Oggetto creato con successo!");
 		}
+		System.out.println("Array creato con Successo! Puoi procedere con la riproduzione dei file!");
+		int scegliOggetto;
+		do {
+			System.out.println(
+					"Seleziona l'oggetto da riprodurre (da 1 a 5). Premere 0 per interrompere la riproduzione");
+			scegliOggetto = myScanner.nextInt();
+			if (scegliOggetto < 0 || scegliOggetto > myArray.length) {
+				System.err.println("Selezionare un numero compreso tra 1 e 5 per riprodurre un file, 0 per uscire");
+				continue;
+			} else if (scegliOggetto == 0) {
+				System.out.println("Riproduzione interrotta");
+				break;
+			}
+
+			Multimediale oggetto = myArray[scegliOggetto - 1];
+			if (oggetto instanceof Video) {
+				Video video = (Video) oggetto;
+				video.play();
+			} else if (oggetto instanceof Audio) {
+				Audio audio = (Audio) oggetto;
+				audio.play();
+			} else if (oggetto instanceof Immagine) {
+				Immagine immagine = (Immagine) oggetto;
+				immagine.show();
+			}
+		} while (scegliOggetto != 0);
+
 		myScanner.close();
 
 	}
