@@ -19,6 +19,10 @@ public class Immagine extends Multimediale implements Show, Luminosity {
 
 	@Override
 	public void show() {
-
+		String myImage = titolo;
+		for (int i = 0; i < durata; i++) {
+			myImage += "*";
+		}
+		System.out.println(myImage);
 	}
 }
