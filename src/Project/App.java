@@ -18,7 +18,7 @@ public class App {
 
 			int durata;
 
-			// Controllo sull'input
+			// 1° Controllo sull'input
 			while (true) {
 				System.out.println("Durata oggetto multimediale (inserire 0 per creare un immagine)");
 				if (myScanner.hasNextInt()) {
@@ -40,6 +40,7 @@ public class App {
 			if (durata == 0) {
 				myArray[i] = new Immagine(titolo);
 			} else {
+				// 2° Controllo sull'input
 				audioOrVideo: while (true) {
 					System.out.println("Vuoi creare un file audio o video? premi 1 per audio e 2 per video");
 					if (myScanner.hasNextInt()) {
@@ -67,12 +68,12 @@ public class App {
 		}
 		System.out.println("Array creato con Successo! Puoi procedere con la riproduzione dei file!");
 
-		// Funzione per la riproduzione e controllo volume e luminosità degli oggetti
-
+		// Selezione Oggetto
 		int scegliOggetto;
 		do {
 			System.out.println(
 					"Seleziona l'oggetto da riprodurre (da 1 a 5). Premere 0 per interrompere la riproduzione");
+			// 3° Controllo sull'input
 			while (!myScanner.hasNextInt()) {
 				System.err.println("Inserire un numero intero compreso tra 0 e 5");
 				myScanner.next();
@@ -86,6 +87,12 @@ public class App {
 				break;
 			}
 			myScanner.nextLine();
+
+			// Funzione per la riproduzione e controllo volume e luminosità degli oggetti
+			// L'input non necessita di controllo perché se non vengono inseriti i caratteri
+			// + e - la funzione si interrompe e procede al passaggio successivo; Controllo
+			// su max e min di luminosità e volume avviene nelle classi
+
 			Multimediale oggetto = myArray[scegliOggetto - 1];
 			if (oggetto instanceof Video) {
 				Video video = (Video) oggetto;
