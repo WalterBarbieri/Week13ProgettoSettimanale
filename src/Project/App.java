@@ -5,6 +5,9 @@ import java.util.Scanner;
 public class App {
 
 	public static void main(String[] args) {
+
+		// Funzione per popolare l'array
+
 		Multimediale[] myArray = new Multimediale[5];
 
 		Scanner myScanner = new Scanner(System.in);
@@ -14,6 +17,8 @@ public class App {
 			String titolo = myScanner.nextLine();
 
 			int durata;
+
+			// Controllo sull'input
 			while (true) {
 				System.out.println("Durata oggetto multimediale (inserire 0 per creare un immagine)");
 				if (myScanner.hasNextInt()) {
@@ -34,29 +39,36 @@ public class App {
 
 			if (durata == 0) {
 				myArray[i] = new Immagine(titolo);
-			} else if (durata < 0 || durata > 20) {
-				System.err.println("Il valore deve essere compreso tra 0 e 20");
-				continue;
 			} else {
-				System.out.println("Vuoi creare un file audio o video? premi 1 per audio e 2 per video");
-				int scegliMedia = myScanner.nextInt();
-				myScanner.nextLine();
-				switch (scegliMedia) {
-				case 1:
-					myArray[i] = new Audio(titolo, durata);
-					break;
-				case 2:
-					myArray[i] = new Video(titolo, durata);
-					break;
-				default:
-					System.err.println("Attenzione, inserire solamente valori 1 e 2");
-					continue;
+				audioOrVideo: while (true) {
+					System.out.println("Vuoi creare un file audio o video? premi 1 per audio e 2 per video");
+					if (myScanner.hasNextInt()) {
+						int scegliMedia = myScanner.nextInt();
+						myScanner.nextLine();
+						switch (scegliMedia) {
+						case 1:
+							myArray[i] = new Audio(titolo, durata);
+							break audioOrVideo;
+						case 2:
+							myArray[i] = new Video(titolo, durata);
+							break audioOrVideo;
+						default:
+							System.err.println("Attenzione, inserire solamente i valori 1 e 2");
+							continue audioOrVideo;
+						}
+					} else {
+						System.err.println("Attenzione, inserire solamente i valori 1 e 2");
+						myScanner.nextLine();
+					}
 				}
 
 			}
 			System.out.println("Oggetto creato con successo!");
 		}
 		System.out.println("Array creato con Successo! Puoi procedere con la riproduzione dei file!");
+
+		// Funzione per la riproduzione e controllo volume e luminosità degli oggetti
+
 		int scegliOggetto;
 		do {
 			System.out.println(
