@@ -6,6 +6,7 @@ public class Video extends Multimediale implements Play, Luminosity {
 		super(titolo, durata);
 	}
 
+	@Override
 	public void play() {
 		for (int i = 0; i < durata; i++) {
 			String myVideo = titolo;
@@ -20,18 +21,21 @@ public class Video extends Multimediale implements Play, Luminosity {
 		}
 	};
 
+	@Override
 	public void alzaVolume() {
 		if (volume < 10) {
 			volume++;
 		}
 	};
 
+	@Override
 	public void abbassaVolume() {
 		if (volume > 0) {
 			volume--;
 		}
 	};
 
+	@Override
 	public void aumentaLuminosita() {
 		if (luminosita < 10) {
 			luminosita++;
@@ -39,6 +43,7 @@ public class Video extends Multimediale implements Play, Luminosity {
 
 	};
 
+	@Override
 	public void diminuisciLuminosita() {
 		if (luminosita > 0) {
 			luminosita--;
